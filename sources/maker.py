@@ -1,11 +1,8 @@
 
 from typing import Tuple, Dict, Optional
 
-<<<<<<< HEAD
 from .fridge import Fridge, NotEnoughIngredientException, NotEnoughSauceException
-=======
-from .fridge import Fridge, NotEnoughException, ALL_COSTS, ALL_INGREDIENTS
->>>>>>> origin
+
 from .pizza import RECIPES
 
 

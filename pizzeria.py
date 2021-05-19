@@ -1,7 +1,7 @@
 
 from sources.fridge import Fridge
 from sources.maker import PizzaMaker
-from sources.customer import handle_days
+from sources.customer import handle_customer_queue
 
 
 def main():
@@ -10,8 +10,6 @@ def main():
     print('Maker: Welcome dear customer, the pizzeria is open !')
     try:
         handle_customer_queue(15, maker)
-        handle_days(3, maker, 4)
-
     except Exception as e:
         print('Maker: Sorry something went wrong. We have to close earlier !')
         print('>>>', e)
