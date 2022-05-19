@@ -35,5 +35,9 @@ RECIPES = {
     'mediterranea': {
         'ingredients': {'mozzarella': 3, 'pepper': 4, 'onion': 3},
         'price': 11,
-    }
+    },
+    'lorenzinni': {
+        'ingredients': {'mozzarella': 9, 'garlic': 7, 'onion': 2},
+        'price': 7,
+    },
 }
