@@ -1,17 +1,21 @@
 
 from typing import Tuple, Dict, Optional
 
+<<<<<<< HEAD
 from .fridge import Fridge, NotEnoughIngredientException, NotEnoughSauceException
+=======
+from .fridge import Fridge, NotEnoughException, ALL_COSTS, ALL_INGREDIENTS
+>>>>>>> origin
 from .pizza import RECIPES
 
 
 class PizzaMaker:
     def __init__(self, fridge: Fridge):
         self._fridge: Fridge = fridge
-        self._gain: int = 0
+        self._gain: float = 0
 
     @property
-    def total_gain(self) -> int:
+    def total_gain(self) -> float:
         return self._gain
 
     def __try_to_get_ingredients(self, ingredients: Dict[str, int]) -> Optional[str]:
@@ -42,7 +46,22 @@ class PizzaMaker:
         error = self.__try_to_get_ingredients(ingredients)
         if error is not None:
             return False, error
+
         self._gain += price  # Gain money
         message = self.__apply_sauce(RECIPES[name])
         return True, message
+
+    def buy_ingredients(self):
+        used = self._fridge.ingredient_used
+        for name, amount in used.items():
+            if amount == 0:
+                continue
+            amount += 3  # Buy 3 more
+            idx = ALL_INGREDIENTS.index(name)
+            cost = ALL_COSTS[idx] * amount
+            if cost > self._gain:
+                continue
+            self._gain -= cost
+            self._fridge.add_ingredient(name, amount)
+        self._fridge.reset_count()
 
